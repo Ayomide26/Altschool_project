@@ -1,0 +1,54 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sockshop-ingress
+  namespace: sock-shop
+  annotations:
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - vctcode.tech
+    - sockshop.vctcode.tech
+    - grafana.vctcode.tech
+    - prometheus.vctcode.tech
+    secretName: tls-secret
+  rules:
+  - host: sockshop.vctcode.tech
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: front-end
+            port:
+              number: 80
+
+  - host: grafana.vctcode.tech
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name:  prometheus-grafana
+            port:
+              number: 80
+  
+  - host: prometheus.vctcode.tech
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name:  prometheus-kube-prometheus-prometheus
+            port:
+              number: 9090
+            
+
+  
+  
