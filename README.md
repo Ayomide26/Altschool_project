@@ -38,7 +38,7 @@ Using Terraform as an Infrastructure as a Code (IaaC) tool, create a `main.yml` 
 `aws eks update-kubeconfig --region us-east-1 --name sock-shop`
 - `kubectl apply -f <yml-file-create-app-deployment>`
   
-    ![alt text](images/capture1b.PNG)
+    ![alt text](images/capture1b.JPG)
 - Check your Azure console to view deployed app
 
 
@@ -46,12 +46,12 @@ Using Terraform as an Infrastructure as a Code (IaaC) tool, create a `main.yml` 
 
 
 - To see all running deployment, pods and services, run `kubectl get all`
-  ![alt text](images/capture1a.jpg)
-  ![alt text](images/capture1b.jpg)
-    ![alt text](images/capture1c.jpg)
+  ![alt text](images/capture1a.JPG)
+  ![alt text](images/capture1b.JPG)
+    ![alt text](images/capture1c.JPG)
 - After we confirm that our pods are running, we can now test the application by port-forwarding the service to our local machine using the following command `kubectl port-forward service/front-end -n sock-shop 30001:80`
- ![alt text](images/capture1d.jpg)
-  ![alt text](images/capture1d.jpg)
+ ![alt text](images/capture1d.JPG)
+  ![alt text](images/capture1d.JPG)
 
 ### Monitoring
 - Prometheus will be used to monitor the performance and health of the Socks Shop application. This will include metrics such as request latency, error rate, and request volume. The Prometheus server will be configured to scrape metrics from the Socks Shop application and store them in a time-series database. Grafana will be used to visualize the metrics and create dashboards to monitor the performance and health of the application.
